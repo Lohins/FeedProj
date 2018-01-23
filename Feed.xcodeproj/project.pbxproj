@@ -19,8 +19,9 @@
 		CE5947B220165A55006569AB /* FeedBasicNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5947B120165A55006569AB /* FeedBasicNetworkService.swift */; };
 		CE5947B72016705D006569AB /* FeedItemTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5947B62016705D006569AB /* FeedItemTBC.swift */; };
 		CE5947B9201680AC006569AB /* String-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5947B8201680AC006569AB /* String-Extension.swift */; };
-		CE5947BB20168FE2006569AB /* FeedAddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5947BA20168FE2006569AB /* FeedAddNewViewController.swift */; };
+		CE5947BB20168FE2006569AB /* FeedEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5947BA20168FE2006569AB /* FeedEditViewController.swift */; };
 		CE5947BD2016C325006569AB /* FeedTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5947BC2016C325006569AB /* FeedTimePickerView.swift */; };
+		CE5B7BF620176F1A008C9A42 /* FeedEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B7BF520176F1A008C9A42 /* FeedEditingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +52,9 @@
 		CE5947B120165A55006569AB /* FeedBasicNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBasicNetworkService.swift; sourceTree = "<group>"; };
 		CE5947B62016705D006569AB /* FeedItemTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemTBC.swift; sourceTree = "<group>"; };
 		CE5947B8201680AC006569AB /* String-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Extension.swift"; sourceTree = "<group>"; };
-		CE5947BA20168FE2006569AB /* FeedAddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAddNewViewController.swift; sourceTree = "<group>"; };
+		CE5947BA20168FE2006569AB /* FeedEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditViewController.swift; sourceTree = "<group>"; };
 		CE5947BC2016C325006569AB /* FeedTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTimePickerView.swift; sourceTree = "<group>"; };
+		CE5B7BF520176F1A008C9A42 /* FeedEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditingViewController.swift; sourceTree = "<group>"; };
 		E5BF412A5931D43E47E2ACAC /* Pods-Feed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feed.release.xcconfig"; path = "Pods/Target Support Files/Pods-Feed/Pods-Feed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,7 +210,8 @@
 		CE5B7BC82016EABD008C9A42 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				CE5947BA20168FE2006569AB /* FeedAddNewViewController.swift */,
+				CE5947BA20168FE2006569AB /* FeedEditViewController.swift */,
+				CE5B7BF520176F1A008C9A42 /* FeedEditingViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -368,13 +371,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5947B220165A55006569AB /* FeedBasicNetworkService.swift in Sources */,
+				CE5B7BF620176F1A008C9A42 /* FeedEditingViewController.swift in Sources */,
 				CE5947B0201656D6006569AB /* FeedItem.swift in Sources */,
 				CE5947B72016705D006569AB /* FeedItemTBC.swift in Sources */,
 				CE5947AD20165672006569AB /* ListFetchService.swift in Sources */,
 				CE59478A201652C8006569AB /* FeedMainViewController.swift in Sources */,
 				CE5947B9201680AC006569AB /* String-Extension.swift in Sources */,
 				CE594788201652C8006569AB /* AppDelegate.swift in Sources */,
-				CE5947BB20168FE2006569AB /* FeedAddNewViewController.swift in Sources */,
+				CE5947BB20168FE2006569AB /* FeedEditViewController.swift in Sources */,
 				CE5947BD2016C325006569AB /* FeedTimePickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

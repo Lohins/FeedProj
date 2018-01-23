@@ -97,7 +97,16 @@ extension FeedMainViewController: UITableViewDelegate, UITableViewDataSource{
                 self.feedItemList[path.row] = newItem
                 tableView.reloadRows(at: [path], with: .fade)
             }
-            self.navigationController?.pushViewController(editViewController, animated: true)
+            
+            // tmp
+            let editingVC = storyBoard.instantiateViewController(withIdentifier: "FeedEditingViewController") as! FeedEditingViewController
+            editingVC.setItem(item: item.deepCopy())
+            // Set callback function when the editing is done.
+            editingVC.callBack = { (newItem) -> Void in
+                self.feedItemList[path.row] = newItem
+                tableView.reloadRows(at: [path], with: .fade)
+            }
+            self.navigationController?.pushViewController(editingVC, animated: true)
         }
         
         return [editAction, deleteAction]
