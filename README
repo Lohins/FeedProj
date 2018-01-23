@@ -1,0 +1,13 @@
+README
+
+1. This project is written by Swift 4.0.
+2. The dependency manager tool used is CocoaPods.
+
+
+* To run the project, you need to install CocoaPods, using the command:
+$ sudo gem install cocoapods
+
+* If you have installed CocoaPods, under the folder of the project, run the following command:
+$ pod install
+
+* After installing the dependency, you should open the file with the suffix .xcworkspace and click Run or use command "Command + R"
