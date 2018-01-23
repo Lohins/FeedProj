@@ -46,6 +46,7 @@ class FeedItem: NSObject {
             let timeInterval = TimeInterval.init(tmpTimeStamp)
             self.timeStamp = tmpTimeStamp
             self.date = Date.init(timeIntervalSince1970: timeInterval)
+            
         }
         
         
@@ -121,6 +122,14 @@ class FeedItem: NSObject {
         dateFormate.timeZone = TimeZone.current
         dateFormate.dateFormat = "MMM dd, yyyy"
         let time = dateFormate.string(from: date)
+        
+        // Comapre with today
+        let today = Date()
+        let todayString = dateFormate.string(from: today)
+        
+        if todayString == time{
+            return "Today"
+        }
         
         return time
     }
