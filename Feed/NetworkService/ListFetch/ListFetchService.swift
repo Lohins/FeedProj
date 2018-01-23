@@ -10,11 +10,12 @@ import UIKit
 
 class ListFetchService: NSObject {
     
+
+    
     func fetchList(forPageNum pageNum : Int, finishBlk: @escaping ([FeedItem]?, _ error: Error?) -> Void) {
         
         // Concatenate the request url.
         let url = "http://dev.dashhudson.com/feed_test/next?page=\(pageNum)&token=1laLEqpZ7p"
-        
         
         // Do get request.
         FeedBasicNetworkService.sharedInstance.getRequest(url, params: ["data" : "data" as AnyObject]) { (data, err) in

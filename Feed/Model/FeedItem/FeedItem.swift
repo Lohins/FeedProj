@@ -49,7 +49,12 @@ class FeedItem: NSObject {
             
         }
         
-        
+        calculateTextHeight()
+
+    }
+    
+    // Calculate the text height
+    func calculateTextHeight()  {
         // Calculate the height of cell given the long text.
         let appSize = UIScreen.main.bounds.size
         let font = UIFont.systemFont(ofSize: 13)
@@ -70,6 +75,8 @@ class FeedItem: NSObject {
     
     func setText(text: String) {
         self.text = text
+        // Also need to re-calculate the text height
+        calculateTextHeight()
     }
     
     // Getter methods.

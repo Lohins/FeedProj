@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 /*
  The class works as the entrance of the application.
@@ -24,6 +25,9 @@ class FeedMainViewController: UIViewController {
     // Data Properties
     var feedItemList:[FeedItem] = []
     
+    // For implementing paging function, define a variable for page.
+    var pageNum = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +41,30 @@ class FeedMainViewController: UIViewController {
     func configureTableView() {
         self.itemTableView.delegate = self
         self.itemTableView.dataSource = self
+        
+        // Add drag down function to the table view
+        let header = MJRefreshNormalHeader.init { [weak self] in
+            self?.dragDownRefresh()
+        }
+        header?.setTitle("Release to refresh.", for: .pulling)
+        header?.setTitle("Refreshing...", for: .refreshing)
+        self.itemTableView.mj_header = header
+        
+        // Add Pull up function to the table view
+        let footer = MJRefreshAutoNormalFooter.init(refreshingBlock: { [weak self] in
+            self?.updateData()
+            
+        })
+        footer?.setTitle("Release to load more.", for: .pulling)
+        footer?.setTitle("Loading more ...", for: .refreshing)
+        self.itemTableView.mj_footer = footer
     }
-
-    // Fetch data from server and rerender the view.
-    func updateData() {
-        service.fetchList(forPageNum: 0) { (itemList, err) in
+    
+    // Table view drag down to refresh the table
+    func dragDownRefresh() {
+        // reset the page number to zero
+        self.pageNum = 0
+        service.fetchList(forPageNum: pageNum) { (itemList, err) in
             guard let itemList = itemList else{
                 return
             }
@@ -49,6 +72,31 @@ class FeedMainViewController: UIViewController {
             self.feedItemList = itemList
             // Reload the table view
             self.itemTableView.reloadData()
+
+            if self.itemTableView.mj_header.isRefreshing{
+                self.itemTableView.mj_header.endRefreshing()
+            }
+        }
+    }
+
+    // Fetch data from server and rerender the view.
+    // It will be call when the setup phrase or the pull up action.
+    func updateData() {
+        service.fetchList(forPageNum: pageNum) { (itemList, err) in
+            guard let itemList = itemList else{
+                return
+            }
+            // Update the source data
+            self.feedItemList.append(contentsOf: itemList)
+            // Reload the table view
+            self.itemTableView.reloadData()
+            
+            // pageNum plus 1
+            self.pageNum = self.pageNum + 1
+            
+            if self.itemTableView.mj_footer.isRefreshing{
+                self.itemTableView.mj_footer.endRefreshing()
+            }
         }
     }
 }
@@ -117,6 +165,7 @@ extension FeedMainViewController: UITableViewDelegate, UITableViewDataSource{
         let item = self.feedItemList[indexPath.row]
         return item.cellHeight
     }
+    
     
     
     
